@@ -7,7 +7,8 @@ inputNameEl.addEventListener('input', onInputChange);
 
 function onInputChange() {
     if (!inputNameEl.value) {
-        nameEl.textContent = 'незнакомец'
+        nameEl.textContent = 'незнакомец';
+        return;
     }
     nameEl.textContent = inputNameEl.value;
 }

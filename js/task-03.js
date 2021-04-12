@@ -19,22 +19,18 @@ const images = [
 
 const galeryList = document.querySelector('#gallery');
 
-images.forEach(image => {
-    const galeryElements = document.createElement('li');
-    const imageEl = document.createElement('img');
+function makingList(array) {
+  const newList = array.map(element => {
+    return `<li  style='list-style: none'><img src='${element.url}' alt='${element.alt}' class='img'></img></li>`
+  });
 
-    const valueSrc = Object.values(image)[0];
-    const valueAlt = Object.values(image)[1];
-    
-    imageEl.setAttribute('src', valueSrc);
-    imageEl.setAttribute('alt', valueAlt);
-    imageEl.width = 320;
-    imageEl.height = 200;
+  galeryList.insertAdjacentHTML(`beforeend`, newList.join(''));
 
+  const imageEl = galeryList.querySelectorAll('.img');
 
-    galeryElements.insertAdjacentElement('afterbegin', imageEl);
+  imageEl.forEach(item => {
+    item.style.maxHeight = '300px'
+  });
+}
 
-    galeryList.appendChild(galeryElements);
-});
-
-
+makingList(images);
